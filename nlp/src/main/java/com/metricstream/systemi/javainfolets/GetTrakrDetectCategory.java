@@ -1,5 +1,6 @@
 package com.metricstream.systemi.javainfolets;
 
+
 import java.sql.Connection;
 
 import java.sql.DriverManager;
@@ -12,26 +13,16 @@ import org.slf4j.Logger;
 
 import com.metricstream.systemi.dao.NlpCategoriesDao;
 import com.metricstream.systemi.dao.NlpCategoriesObject;
-import com.metricstream.systemi.helper.TrakrHelper;
 //import com.metricstream.util.db.JDBCConnector;
 
 
-public class GetNlpCategories {
+public class GetTrakrDetectCategory {
 	final static String CLASS_ID = "GetComponentCategories";	
 	static final int NUM_COLUMNS = 9;	
-	final static Logger logger = LoggerFactory.getLogger(GetNlpCategories.class);
-	
-	/*public static void main(String[] args) {
-		GetNlpCategories nlpcat = new GetNlpCategories();
-		nlpcat.getNlpCategories();
-		System.out.println("aaa");
-	}*/
+	final static Logger logger = LoggerFactory.getLogger(GetTrakrDetectCategory.class);
 	public static String[][] getNlpCategories() {
-	
-	//public static void main(String args[]){
 		String[][] result = null;
 		try {
-			//JDBCConnector connector = new JDBCConnector();
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			System.out.println("registered the driver");
 			Connection con = DriverManager.getConnection(
@@ -67,8 +58,6 @@ public class GetNlpCategories {
 		}catch(Exception ex){
 			logger.debug(CLASS_ID, "Error in obtaining NLP DATA", ex);
 		}
-		
-		System.out.println("the categories obtained are"+result.length);
 		return result;
 		
 	}
