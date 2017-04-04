@@ -1,0 +1,427 @@
+<?xml version="1.0"?>
+ <!DOCTYPE MODULE SYSTEM "file://localhost/E:/Apps/Apps6.0/DTD/Module.dtd" [
+  <!ENTITY hostname "msi-l501">
+  <!ENTITY agenthostname "msi-l501">
+  <!ENTITY workflowhostname "msi-l501">
+  <!ENTITY modules "E:/Apps/Apps6.0">
+  <!ENTITY systemi_root "&modules;/modules">
+  <!ENTITY systemiroot "&modules;">
+  <!ENTITY key_root "&modules;">
+  <!ENTITY modules_root "&modules;/modules">
+  <!ENTITY project_root "&modules;">
+  <!ENTITY font_name "Verdana">
+  <!ENTITY resource "Resource">
+  <!ENTITY html "Html">
+  <!ENTITY text "Text">
+  <!ENTITY webapp_prefix "">
+  <!ENTITY dbpasswd "yo5Wzchu_dat">
+  <!ENTITY servleturl_suffix "/metricstream/systemi">
+  <!ENTITY webapp_url "&systemi_root;">
+  <!ENTITY webapp_root "">
+  <!ENTITY custom_templateroot "&systemi_root;/custom_templates">
+  <!ENTITY index "1">
+  <!ENTITY dctm_folder "">
+  <!ENTITY dctm_base "">
+  <!ENTITY dctm_domain "">
+  <!ENTITY dctm_user "">
+  <!ENTITY dctm_pass "">
+  <!ENTITY dctm_doc_type "msw8">
+  <!ENTITY user_home "C:/Documents and Settings/prasadbabu">
+  <!ENTITY license SYSTEM "file://localhost/E:/Apps/Apps6.0/keys/EGRCP_license.xml">
+  <!ENTITY attachment_root "E:/Apps/Apps6.0/Attachments">
+  <!--rmaheshwariENTITY TransientNameServer "com.sun.corba.se.internal.CosNaming.TransientNameServer"-->
+  <!ENTITY jndi_orb_wrapper "">
+  <!ENTITY webport ""> <!-- give ':' with port number like ':80'  -->
+  <!ENTITY webserviceport "5523">
+  <!ENTITY secure "">
+  <!ENTITY enterprise "EGRCP">
+  <!ENTITY briefcase_port ":1111">
+  <!ENTITY briefcase_host "msi-qasrv-09">
+  <!ENTITY briefcase_servlet "">
+  <!ENTITY production_report_storage_path "&systemi_root;/custom_templates/report">
+  <!ENTITY node_id "msi-l501">
+  ]>
+    
+<!--  $Id: client.config.master,v 1.105 2007/04/24 12:37:04 smalakalapalli Exp 9980564587 Harish$
+
+      module name and index in naming service, default index is 0 -->
+<MODULE NAME="MetricStream Enterprise Compliance Platform in Single Node" INDEX="0">
+  <SYSTEM>
+    <PROPERTIES>
+	<PROPERTY NAME="NODE_ID">&node_id;</PROPERTY>
+	<PROPERTY NAME="PERSISTENT">true</PROPERTY>
+	<PROPERTY NAME="INFOLET_UPDATE_ALLOWED">true</PROPERTY>
+	<PROPERTY NAME="INFOLET_SMART_RUN">true</PROPERTY>
+	<PROPERTY NAME="SCHEDULER_USES_SERVER_TIMEZONE">false</PROPERTY>
+	<PROPERTY NAME="MAX_RADIOBUTTON_ROWS">20</PROPERTY>
+	<PROPERTY NAME="LOV_AND_MLOV_ITEMS_PER_PAGE">10</PROPERTY>
+	<PROPERTY NAME="REPORTS_EXPORT_QUEUING_ENABLED">yes</PROPERTY>
+	<PROPERTY NAME="OOO_HTML_TIDY_REGEX_CONFIG">D:/Apps/Trunk/src/Config/htmltidyregex.properties</PROPERTY>
+	<PROPERTY NAME="FORM_AUTOSAVE_FEATURE_ENABLE">yes</PROPERTY>
+	<PROPERTY NAME="FORM_AUTOSAVE_INTERVAL">1</PROPERTY> <!-- This value should be in milliseconds.  -->
+	<PROPERTY NAME="ENABLE_FUSION_CHARTS">YES</PROPERTY>
+	<PROPERTY NAME="DISPLAY_TEXTAREA_COUNTER">yes</PROPERTY>
+	<PROPERTY NAME="INFOLET_COLUMN_SUBSET_ENABLE">TRUE</PROPERTY>
+	<PROPERTY NAME="REPORT_AJAX_TIMEOUT">60000</PROPERTY>
+	<!-- Property to run the report filter (LOV) infolet lazily -->
+	<PROPERTY NAME="LAZY_LOAD_REPORT_FILTER_INFOLET">Yes</PROPERTY>
+	<PROPERTY NAME="ENABLE_MY_REPORTS">true</PROPERTY>
+	<PROPERTY NAME="PRODUCTION_REPORTS_STORAGE">&production_report_storage_path;</PROPERTY>
+	<PROPERTY NAME="PRODUCTION_REPORT_CATEGORIES">Production Report Categories</PROPERTY>
+	<PROPERTY NAME="ALLOWED_REPORT_FILE_LIST">JRXML,ODT,DOC</PROPERTY>
+	<PROPERTY NAME="MULTIPLE_LOGIN">no</PROPERTY>
+	<PROPERTY NAME="ENABLE_RTF_REDLINING">no</PROPERTY>
+	<!--  properties related to AutoSave DB (true/false)-->
+	<PROPERTY NAME="LOV_MLOV_SINGLE_VALUE_DEFAULT_ENABLE">Yes</PROPERTY><!-- Property to control the single value default for optional and mandatory fields -->
+		    <!--  0 for default behaviour, ie preload is done based on the filter != null  && _element.isPreLoadInputPresentations() condition -->
+		    <!--  1 for enabling preloading , ie the value will be set to true explicitly -->
+		    <PROPERTY NAME="PRELOAD_FLAG">1</PROPERTY>	 
+			<PROPERTY NAME="FORM_LOCKING_PERIOD">1</PROPERTY>	 
+			<PROPERTY NAME="ENABLE_OFFLINE_RTF">TRUE</PROPERTY>
+	<PROPERTY NAME="IS_RTF_AUTOSAVE_ENABLED">false</PROPERTY>
+	<PROPERTY NAME="RTF_AUTOSAVE_INTERVAL">20000</PROPERTY> <!-- 10 Sec  -->
+	<PROPERTY NAME="ENABLE_MLOV_MULTI_CHARACTER_DELIMITER">yes</PROPERTY>
+	<PROPERTY NAME="MLOV_MULTI_CHARACTER_DELIMITER">*~*</PROPERTY>
+	  <!-- Briefcase property entered -->
+	  <PROPERTY NAME="ENABLE_SNAPSHOT">yes</PROPERTY>
+	  <PROPERTY NAME="BRIEFCASE_PORT">&briefcase_port;</PROPERTY>
+	  <PROPERTY NAME="ALLOWED_BROWSERS">IE,chrome,mozilla</PROPERTY>
+      <PROPERTY NAME="ENTERPRISE">&enterprise;</PROPERTY>
+      <PROPERTY NAME="OFFLINE_MODE">enabled</PROPERTY>	
+      <PROPERTY NAME="ENABLE_FORM_EXTJS_COMPONENTS">no</PROPERTY>
+      <PROPERTY NAME="ENABLE_FORM_DATE_EXTJS_COMPONENTS">yes</PROPERTY>
+      <PROPERTY NAME="ENABLE_MLOV_SELECTION_GRID">yes</PROPERTY>
+	  <PROPERTY NAME="ASSIGNMENT_INFOPORT_LIST">00101011101001</PROPERTY>
+	  <PROPERTY NAME="SERVANTS_IGNORE_ENCODE">reportsearchpopup,reportswizardtitle,reportscolorcondwizard,Reportsparamdefaultpopup,reportsfilterwizard,chartsfilterwizard,chartswizardcolorcond,filterdatayaxis,filterdatadisplay,createmetrics,editsqldetails,editprocdetails,infoportlayout,submitnclose,filterscreate,getcreatethresholds,getfilwizardnoname,createsqlmetrics,gettaskwizardpopup,bringcreatealerts,validatepopup,validateinfolet,getusersdata,createcompositemetrics,databrowserservant,editthresholds,filtersedit,getalertsdata,showcalendar,managedata</PROPERTY>
+	  <PROPERTY NAME="USES_ATTACHMENT_LOCATOR_TABLE">yes</PROPERTY>
+	  <PROPERTY NAME="USE_ADVANCED_RICHTEXT_EDITOR">yes</PROPERTY>
+      <PROPERTY NAME="ENABLE_TINYMCE_POPUP">yes</PROPERTY>
+      <PROPERTY NAME="LAZY_LOAD_TINYMCE">no</PROPERTY>
+	  <PROPERTY NAME="TINYMCE_EMBED_IMAGE_TYPES">emf,jpeg,jpg,gif,png</PROPERTY>
+      <PROPERTY NAME="ENABLE_CID_FEATURE">no</PROPERTY>
+      <PROPERTY NAME="ENABLE_UNIVERSAL_SEARCH">no</PROPERTY>
+      <PROPERTY NAME="ENABLE_SEARCH">no</PROPERTY>
+	   <PROPERTY NAME="ALLOWED_FILE_EXTENSION">zip|exe|emf|doc|jpg|xls|csv|mht|dot|xlt|sylk|mhtml|html|pdf|txt|bmp|png|rtf|ppt|pot|vsd|vsd|jpeg|gif|docx|xlsx|pptx|xlsm|pptm|potx|potm|dotx|dotm|docm|xlsb|pub|xml|mdb|zip|js</PROPERTY>	  
+	  		<PROPERTY NAME="REGULAR_EXPRESSION_FOR_VALID_FILE_NAME">[a-zA-Z0-9\s_-]{1,240}\.[a-zA-Z0-9]{1,10}</PROPERTY>
+       <!-- <PROPERTY NAME="THEME_COLOR">xtheme-msi-greenxxx.css</PROPERTY> -->
+      <!-- Begin Client App/Web Server related Properties -->
+	  <PROPERTY NAME="ECP_MODE">DEBUG</PROPERTY>
+      <PROPERTY NAME="DEMO_MODE">no</PROPERTY>
+      <PROPERTY NAME="WEBROOT">&webapp_root;</PROPERTY>
+      <PROPERTY NAME="WEBAPPROOT">&webapp_prefix;</PROPERTY>
+      <PROPERTY NAME="IMGROOT">&webapp_prefix;/si_image</PROPERTY>
+      <PROPERTY NAME="treeimages">&webapp_prefix;/si_image/tree</PROPERTY>
+      <PROPERTY NAME="SECURE_OPTION">yes</PROPERTY>
+	  <PROPERTY NAME="SERVLET_URL">http&secure;://&hostname;&webport;&servleturl_suffix;</PROPERTY>
+	  <PROPERTY NAME="ADDITIONAL_DOMAINS">http&secure;://&hostname;,http&secure;://&hostname;&webport;</PROPERTY>
+      <PROPERTY NAME="IMAGE_PATH_ROOT">&webapp_url;/resources/&resource;/images/</PROPERTY>
+      <PROPERTY NAME="WRAPPERNAME">common_wrapper.htm</PROPERTY>
+      <PROPERTY NAME="DEFAULT_SERVANT">Userlogin</PROPERTY>
+      <PROPERTY NAME="IMGPATH">&webapp_url;/resources/&resource;/images/</PROPERTY>
+      <!-- End Client App/Web Server related Properties -->
+      <!--Begin Location of templates/Custom templates/Resource/Attachments -->
+      <PROPERTY NAME="ATTACHMENT_STORAGE">E:/Application Data/MetricStream/Attachments/</PROPERTY>
+      <PROPERTY NAME="TEMPLATEROOT">&systemi_root;/resources/Template/Html</PROPERTY>
+      <PROPERTY NAME="CUSTOM_TEMPLATEROOT">&custom_templateroot;</PROPERTY>
+      <PROPERTY NAME="RESOURCEROOT">&webapp_url;/resources/&resource;/&text;/</PROPERTY>
+      <PROPERTY NAME="JSROOT">&webapp_url;/resources/Html/Webroot</PROPERTY>
+      <PROPERTY NAME="TEMP_DIRECTORY">&webapp_url;/src/temp/</PROPERTY>
+      <PROPERTY NAME="IUPROOT">&systemi_root;/IUP/</PROPERTY>
+      <PROPERTY NAME="DEFAULT_PRINT_MODE">LANDSCAPE</PROPERTY>
+      <PROPERTY NAME="CHECK_RESOURCE_UPDATES">yes</PROPERTY>
+	  <PROPERTY NAME="ATTACHMENT_LINK_SECURITY">no</PROPERTY>
+	  <PROPERTY NAME="ENABLE_ACCESSIBILITY">no</PROPERTY>
+      <!--End Location of templates/Custom templates/Resource/Attachements -->
+      <!--Begin license related items -->
+ 	  <INSTANCE>
+        <PROPERTY NAME="DBURL">jdbc:oracle:thin:@msi-l501:1521:xe</PROPERTY>
+        <PROPERTY NAME="DBUSER">ECP61</PROPERTY>
+      </INSTANCE>
+	<PROPERTY NAME="DBPASSWD">ECP61</PROPERTY>
+
+		 <!-- <INSTANCE>
+          	<PROPERTY NAME="DBURL">jdbc:oracle:thin:@msi-vmpl1db1:1522:pl10203</PROPERTY>
+          	<PROPERTY NAME="DBUSER">PARAM60</PROPERTY>
+          </INSTANCE>
+	<PROPERTY NAME="DBPASSWD">PARAM60</PROPERTY> -->
+      &license;
+
+
+      <!--End license related items -->
+      <!--Begin DB related items -->
+      <PROPERTY NAME="DBDRIVER">oracle.jdbc.driver.OracleDriver</PROPERTY>
+      <PROPERTY NAME="MAXCONNECTIONS">14</PROPERTY>
+      <PROPERTY NAME="DBC_LIFETIME">1200000</PROPERTY>
+      <PROPERTY NAME="DBC_INACTIVITY_TIMEOUT">900000</PROPERTY>
+      <PROPERTY NAME="MAX_CLOB_SIZE">10000000</PROPERTY>
+      <PROPERTY NAME="DB_CONNECTION_TIMEOUT">1800000</PROPERTY>
+      <PROPERTY NAME="DB_GET_CONNECTION_TIMEOUT">300000</PROPERTY>
+      <PROPERTY NAME="DATAACCESS">com.metricstream.dataaccess.oracle.ver9205.driver.Driver</PROPERTY>
+      <PROPERTY NAME="COMMIT_CHUNK_SIZE">1000</PROPERTY>
+      <!--End DB related items -->
+      <!--Begin Log related items -->
+      <PROPERTY NAME="LOGFILE">&project_root;/log/client</PROPERTY>
+      <PROPERTY NAME="ROLL_LOG">yes</PROPERTY>
+      <PROPERTY NAME="LOGLEVEL">0</PROPERTY>
+      <PROPERTY NAME="INFOLET_EXECUTION_LOGGING">yes</PROPERTY>
+      <!--End Log related items -->
+      <!--Begin Advanced logging properties -->
+      <!-- Put in log user session id, makes sense only for client configs -->
+      <!-- <PROPERTY NAME="LOG_USERSESSION">yes</PROPERTY> -->
+      <!-- Allows to customize log messages, {n} where n=0..5 predefined as
+      0 - date, 1 - severity, 2 - caller id, 3 - thread id, 4 - message,
+      5 - session id, 6 - call stack, 7 - infolet id -->
+      <PROPERTY NAME="LOG_FORMAT_STR">{0,date,MM/dd/yy} {0,time,HH:mm:ss.SSS zzz} {1} [{2}] {4}</PROPERTY>
+      <!-- Allows to print two line stack trace, note it will slow down logger when enabled -->
+      <!-- <PROPERTY NAME="LOG_CALLER_ID">yes</PROPERTY> -->
+      <!-- Allows to disable/enable log messages from certain classes (comma separated).
+      If loglevel=debug, then it disable, if loglevel > debug, then enable. It slows down logger as well
+      -->
+      <!-- <PROPERTY NAME="LOG_EXCLUSION_CLASSES">com.metricstream.systemi.server.common.Controller$5</PROPERTY> -->
+      <!--End Advanced logging properties -->
+      <!--Begin JNDI Properties-->
+<!--       <PROPERTY NAME="JNDI_FACTORY">com.sun.jndi.cosnaming.CNCtxFactory</PROPERTY>
+      <PROPERTY NAME="JNDI_URL">iiop://localhost:9001</PROPERTY> -->
+      <PROPERTY NAME="JNDI_ENVIRONMENT">default</PROPERTY>
+	  <PROPERTY NAME="JNDI_ORB_WRAPPER">&jndi_orb_wrapper;</PROPERTY>
+	  <!--PROPERTY NAME="JNDI_ENVIRONMENT">java.naming.provider.url=iiop://&host;:900,java.naming.factory.initial=com.sun.jndi.cosnaming.CNCtxFactory</PROPERTY-->
+      <!--End JNDI Properties-->
+      <PROPERTY NAME="NscapeLDAPProvider.dn_pattern">uid={0},{2}</PROPERTY>
+      <PROPERTY NAME="NscapeLDAPProvider.id_attrname">uid</PROPERTY>
+      <PROPERTY NAME="NscapeLDAPProvider.search_filter_pattern">uid={0}</PROPERTY>
+      <PROPERTY NAME="NscapeLDAPProvider.login_search_pattern">uid={0}</PROPERTY>
+      <!--Begin Servant LoadBalancing related items -->
+      <PROPERTY NAME="MAX_WAITING_REQUESTS">10</PROPERTY>
+      <PROPERTY NAME="MAX_REQUEST_WAITING_TIME">20000</PROPERTY>
+      <PROPERTY NAME="MAX_PERFORMANCE_WEIGHT">250</PROPERTY>
+      <!--End Servant LoadBalancing related items -->
+      <!-- BEGIN Properties for various fonts-->
+      <PROPERTY NAME="PDF_FONT_CONFIG_FILE_LOCATION">&systemi_root;/Config/fop.font.config.xml</PROPERTY>
+      <PROPERTY NAME="HEADER_FONT">&font_name;-PLAIN-14</PROPERTY>
+      <PROPERTY NAME="FONT">&font_name;-BOLD-10</PROPERTY>
+      <PROPERTY NAME="YAXIS_FONT">&font_name;-PLAIN-10</PROPERTY>
+      <PROPERTY NAME="YAXIS_TITLE_FONT">&font_name;-PLAIN-10</PROPERTY>
+      <PROPERTY NAME="XAXIS_FONT">&font_name;-PLAIN-20</PROPERTY>
+      <PROPERTY NAME="XAXIS_TITLE_FONT">&font_name;-PLAIN-20</PROPERTY>
+      <PROPERTY NAME="YAXIS1_FONT">&font_name;-PLAIN-10</PROPERTY>
+      <PROPERTY NAME="YAXIS1_TITLE_FONT">&font_name;-PLAIN-10</PROPERTY>
+      <!-- END Properties for various fonts-->
+      <!-- Begin Chart Properties -->
+      <PROPERTY NAME="PRESENTATION_PIE_SIZE">280,280</PROPERTY>
+      <PROPERTY NAME="PRESENTATION_CHARTS_SIZE">640,420;375,270;250,180;180,150;150,150</PROPERTY>
+      <!--  the property defined the number of characters (when no time stamp displayed)
+                  for chart name in dashboard. -->
+      <PROPERTY NAME="PRESENTATION_CHARTS_HEADER_WIDTH_WITHOUT_TIMESTAMP">80;40;20;20;20</PROPERTY>
+      <!--  the property defined the number of characters (when time stamp displayed)
+        for chart name in dashboard. -->
+      <PROPERTY NAME="PRESENTATION_CHARTS_HEADER_WIDTH_WITH_TIMESTAMP">36;15;5;5;5</PROPERTY>
+      <PROPERTY NAME="X_LABEL_CHARS">8</PROPERTY>
+      <PROPERTY NAME="X_LABEL_CHARS_DETACH">12</PROPERTY>
+      <PROPERTY NAME="CHART_TOOL_VENDOR">ChartDirector</PROPERTY>
+      <!-- the property specifies the max length (in pixels) per line for x axis labels -->
+      <PROPERTY NAME="X_LABEL_PIXELS">100</PROPERTY>
+      <PROPERTY NAME="MAX_POINTS_PER_LINE">5000</PROPERTY>
+      <!-- End Chart Properties -->
+      <!-- Properties for EDMS -->
+      <PROPERTY NAME="DOCUMENT_SERVER_HOST">bnwsusr315.metricstream.com</PROPERTY>
+      <PROPERTY NAME="SERVLET_HOME_URL">http://&hostname;/metricstream/VueServlet</PROPERTY>
+      <!-- END Properties EDMS -->
+      <!-- Begin Advanced Properties -->
+      <!-- <PROPERTY NAME="TIMEZONE">IST</PROPERTY> -->
+      <PROPERTY NAME="LOCALE">en_US</PROPERTY>
+      <PROPERTY NAME="CHARACTER_SET">UTF-8</PROPERTY>
+      <PROPERTY NAME="TERMINATE_ON_VM_ERROR">yes</PROPERTY>
+      <PROPERTY NAME="SMTP_TIMEOUT">60000</PROPERTY>
+      <PROPERTY NAME="APPLET_TREE">no</PROPERTY>
+      <PROPERTY NAME="MAXROWSIZE_EMAIL">3000</PROPERTY>
+      <PROPERTY NAME="REPORT_AUTOWRAP">no</PROPERTY>
+      <PROPERTY NAME="NEW_INFOCEN_TEMPLATE">yes</PROPERTY>
+      <PROPERTY NAME="SI_BASE">&systemi_root;</PROPERTY>
+      <PROPERTY NAME="PART_11">yes</PROPERTY>
+      <PROPERTY NAME="PUSH_INFOLET_TEMPLATE">nice_submission_form.htm</PROPERTY>
+      <PROPERTY NAME="COMMON_LABELS">CommonLabels</PROPERTY>
+      <!-- <PROPERTY NAME="APPS_COMMON_LABELS">test</PROPERTY> -->
+      <PROPERTY NAME="CHANNELNAME">SQL channel</PROPERTY>
+      <PROPERTY NAME="ONDEMAND_CHANNEL">SQL channel</PROPERTY>
+      <PROPERTY NAME="HIDE_ENTERPRISES" />
+      <PROPERTY NAME="OVERRIDE_LOCALE">no</PROPERTY>
+      <!-- Begin Form Submission/Pushproxy related -->
+	  <PROPERTY NAME="WEBSERVICES_DESTINATION">http&secure;://&hostname;&webport;&servleturl_suffix;/Pushproxy</PROPERTY>
+	  <PROPERTY NAME="PORT">&webport;</PROPERTY>
+      <PROPERTY NAME="PROXY_TARGET_URL">http://&workflowhostname;:&webserviceport;</PROPERTY>
+      <PROPERTY NAME="WEBSERVICE_HOST">&workflowhostname;</PROPERTY>
+      <PROPERTY NAME="WEBSERVICE_PORT">&webserviceport;</PROPERTY>
+      <PROPERTY NAME="MAX_LOV_ROWS">100</PROPERTY>
+      <!-- End Form Submission/Pushproxy related -->
+	  <!--Todo list related properties,-->
+	 <PROPERTY NAME="TO_DO_LIST_NEW">2</PROPERTY> 
+	  <!--New value in Todo list specified in days-->
+	  <PROPERTY NAME="TO_DO_LIST_REFRESH_RATE">5</PROPERTY>
+	  <!--refresh value is in mintues-->
+      <PROPERTY NAME="JSPELL_HTML_PATH">/jspellhtml</PROPERTY>
+      <!-- JSpell related properties -->
+      <PROPERTY NAME="JSPELL_IFRAME_PATH">/jspelliframe</PROPERTY>
+      <!-- JSpell related properties end-->
+      <!-- Adobe Annotation related properties -->
+      <PROPERTY NAME="SERVLET_NAME">&servleturl_suffix;</PROPERTY>
+<!--       <PROPERTY NAME="PORT">80</PROPERTY> -->
+      <PROPERTY NAME="ANNOT_LOV_LOOKUP">Category;MS_DMS_ANNOT_CATEGORY,Section;MS_DMS_ANNOT_SECTION,Response;MS_DMS_ANNOT_RESPONSE,SubCategory;MS_DMS_ANNOT_SUBCATEGORY</PROPERTY>
+      <!-- Adobe Annotation related properties end -->
+      <PROPERTY NAME="edms_acrobat_plugin_ver">3.6.1026.10</PROPERTY>
+      <PROPERTY NAME="TEMPLATE_ENGINE_FACTORY">com.metricstream.systemi.client.util.VelocityAdapterImpl:com.metricstream.systemi.client.util.SubstitutorAdapterImpl</PROPERTY>
+      <!-- Specifies the class used to load Forms. Possible values are CAPTUREPOINT and FASTFORM -->
+      <PROPERTY NAME="FORM_LOADER">CAPTUREPOINT</PROPERTY>
+      <PROPERTY NAME="POPUP_WRAPPER_NAME">popup_wrapper.htm</PROPERTY>
+      <!--Advanced Properties Ends-->
+      <!--Zaplet related Properties -->
+      <PROPERTY NAME="ZAPLET_FORM_URI_PATTERN">/Userlogin?open=Pushinfolet&amp;id={0,number,#}&amp;proc={1,number,#}&amp;x_zaplet=1</PROPERTY>
+      <PROPERTY NAME="ZAPLET_FORM_URI_PARAMETERS">open=Pushinfolet&amp;id={0,number,#}&amp;proc={1,number,#}</PROPERTY>
+      <PROPERTY NAME="ZAPLET_DASHBOARD_URI_PARAMETERS">open=Dashboardview</PROPERTY>
+      <PROPERTY NAME="ZAPLET_REPORT_URI_PARAMETERS">open=Reportsstart</PROPERTY>
+      <PROPERTY NAME="ENABLE_DASHBOARD_SEND_AS_ZAPLET_LINK">true</PROPERTY>
+      <PROPERTY NAME="LOGIN_SERVANT_URI">/Userlogin</PROPERTY>
+      <PROPERTY NAME="LOGOUT_SERVANT_URI">/Lookatme?logoff=1</PROPERTY>
+      <!--Zaplet related Properties ends here -->
+      <PROPERTY NAME="REPOSITORY_MANAGER" TYPE="REFERENCE">File Doc Repository</PROPERTY>
+      <!-- Word export feature related -->
+      <PROPERTY NAME="WORDSERVICE_HOST">localhost</PROPERTY>
+      <PROPERTY NAME="WORDSERVICE_PORT">8100</PROPERTY>
+      <PROPERTY NAME="CUSTOM_RESOURCE_ROOT">&systemi_root;/Resource/Text/custom/</PROPERTY>
+      <!-- Documentum Search related properties -->
+      <PROPERTY NAME="DCTM_DISPLAY_LOGIN_INFO">no</PROPERTY>
+      <!-- If yes, docbases dropdown would be displayed in search input.
+           If no, DCTM_DEFAULT_DOCBASE value would be used for docbase.
+           Default is yes. -->
+      <PROPERTY NAME="DCTM_DISPLAY_DOCBASES">no</PROPERTY>
+      <!-- If yes, documentum search input would be displayed.
+           If no, standard DMS search page would be displayed.
+           Default is no. -->
+      <PROPERTY NAME="DCTM_SEARCH_ENABLED">no</PROPERTY>
+      <PROPERTY NAME="DCTM_DEFAULT_USER" />
+      <PROPERTY NAME="DCTM_DEFAULT_PASSWORD" ENCODED="SYSTEMI" />
+      <PROPERTY NAME="DCTM_DEFAULT_DOCBASE" />
+      <PROPERTY NAME="DRILLDOWN_WINDOW_TYPE">SAME_WINDOW</PROPERTY>
+      <!-- Used to default the corresponding radio button in the print popup of
+      a report and the values should be either PORTRAIT or LANDSCAPE -->
+      <PROPERTY NAME="E_SIGN_POPUP_TIMEOUT_SECS">30</PROPERTY>
+      <PROPERTY NAME="MAX_ATTACHMENT_FILE_SIZE">10240</PROPERTY>
+      <!-- start properties related to search option -->
+      <PROPERTY NAME="ENABLE_SUGGEST_FEATURE">yes</PROPERTY>
+      <!--Default value should be http://www.complianceonline.com/cms/cms/offline/searchContent.html?q= -->
+      <PROPERTY NAME="SEARCH_URL">http://www.complianceonline.com/cms/cms/offline/searchContent.html?q=</PROPERTY>
+      <PROPERTY NAME="SEARCH_BUTTON_LABEL">Search CO</PROPERTY>
+
+      <!-- end properties related to search option -->
+      <PROPERTY NAME="WORD_BOOKMARK_PREFIX">msi_file_</PROPERTY>
+      <PROPERTY NAME="TEMP_FILE_PREFIX">OOTemp</PROPERTY>
+	  
+	  <!--<PROPERTY NAME="SIGNON_AGENT">com.metricstream.systemi.ext.cid_attach.CidSA</PROPERTY>
+	  <PROPERTY NAME="SIGNON_AGENT">com.metricstream.systemi.client.plugin.sso.RemoteUserSA</PROPERTY>
+	  <PROPERTY NAME="SIGNON_AGENT" >com.metricstream.systemi.client.plugin.sso.SiteMinderWebAgentSA</PROPERTY>
+      <PROPERTY NAME="SIGNON_AGENT_PARAM" >iv-user</PROPERTY>
+	  <PROPERTY NAME="SINGLE_SIGNON_PORTAL_LINK">http&secure;://&hostname;&webport;</PROPERTY> 
+	  <PROPERTY NAME="SIGNON_AGENT_ACCESS_URL_PATTERN">&servleturl_suffix;/.*</PROPERTY>-->
+	  <PROPERTY NAME="WEBDAV_SERVLET">http://msi-l501/metricstream/webdav/</PROPERTY>
+	  <PROPERTY NAME="SIGNON_AGENT" >com.metricstream.systemi.ext.sso.webdav.CIDWebdavSA</PROPERTY>
+	  <PROPERTY NAME="BYPASS_AUTH" >YES</PROPERTY>
+      <PROPERTY NAME="SIGNON_AGENT_PARAM" ></PROPERTY>
+	  <PROPERTY NAME="SINGLE_SIGNON_PORTAL_LINK"></PROPERTY>
+      <PROPERTY NAME="SIGNON_AGENT_ACCESS_URL_PATTERN"></PROPERTY>
+	  <PROPERTY NAME="enterprisename">&enterprise;</PROPERTY>
+	  
+	  <!-- date properties added for Ext date -->
+	  <PROPERTY NAME="EXT_DATE_ONLY">com.metricstream.systemi.util.ExtDateConverterImpl{ExtDateOnly.htmp}</PROPERTY> 
+	  <PROPERTY NAME="EXT_TIMESTAMP">com.metricstream.systemi.util.ExtDateConverterImpl{ExtTimestamp.htmp}</PROPERTY> 
+        
+      <!-- properties related to Font -->
+      <PROPERTY NAME="CHART_FONT_NAMES">Arial Unicode MS,Courier New,Times New Roman,Verdana,Lucida Sans Unicode</PROPERTY>
+      <PROPERTY NAME="DEFAULT_CHART_FONT">Arial Unicode MS</PROPERTY>
+	  <PROPERTY NAME="RTF_EMPTY_DOCUMENT">E:/Apps/Apps6.0/modules/resources/Template/html/Doc1.docx</PROPERTY>
+<PROPERTY NAME="SHOW_TITLES_IN_INFOPORT_LINK">yes</PROPERTY>
+<PROPERTY NAME="ENABLE_TOOLTIPS">yes</PROPERTY>
+<PROPERTY NAME="TOOLTIPS_FILE">tooltip</PROPERTY>
+
+<!--added by upendra -->
+<!-- Defines location of public key to decrypt token, can be local file URL -->
+      <PROPERTY NAME="JKS_URL">E:/Apps/keys/webdav_key.jks</PROPERTY>
+      <PROPERTY NAME="JKS_TYPE">JKS</PROPERTY>
+        <!-- <PROPERTY NAME="JKS_URL">file://https://msi-qasrv-17:8380/metricstream/keystore</PROPERTY> -->
+      <!-- Defines keystore password -->
+	<PROPERTY NAME="JKS_PASSWD">welcome*123</PROPERTY>
+      <!-- Defines alias name of keystore -->
+	<PROPERTY NAME="JKS_ALIAS">webdav_test</PROPERTY>
+      <!-- Defines keystore key password -->
+	<PROPERTY NAME="JKS_ALIAS_PASSWD">welcome*123</PROPERTY>
+	<PROPERTY NAME="PASSWORD_ADMINS">SYSTEMI</PROPERTY>
+	
+		<!-- Begin auth token filter/SSO agent configuration releated -->
+	 	<!-- Defines acceess URI pattern for different operations -->
+	<PROPERTY NAME="READ_RESOURCE_REQ_EXPR">.*/Downloaddistr.*</PROPERTY>
+	<PROPERTY NAME="INQUiRY_RESOURCE_REQ_EXPR">.*/Downloaddistr.*</PROPERTY>
+	<PROPERTY NAME="CREATE_RESOURCE_REQ_EXPR">.*/infolet_attachment.*</PROPERTY>
+	<PROPERTY NAME="DELETE_RESOURCE_REQ_EXPR">.*/Downloaddistr.*</PROPERTY>
+	      <!-- Here are property related to parsing resource id from request parameters -->
+	<!--<PROPERTY NAME="READ_RESOURCE_ID_PARAM">db_value</PROPERTY>-->
+	<!--<PROPERTY NAME="CREATE_RESOURCE_ID_PARAM">json_attachment_id</PROPERTY>-->
+        <PROPERTY NAME="READ_RESOURCE_ID_PARAM">file_unique_id</PROPERTY>
+        <PROPERTY NAME="CREATE_RESOURCE_ID_PARAM">file_unique_id</PROPERTY>
+	<PROPERTY NAME="DELETE_RESOURCE_ID_PARAM">db_value</PROPERTY>
+	<PROPERTY NAME="INQUIRY_RESOURCE_ID_PARAM">db_value</PROPERTY>
+	      <!-- Here are property related to SSO authentication -->
+	<PROPERTY NAME="USER_SSO_PARAM">iv-user</PROPERTY>
+	<PROPERTY NAME="COUNTRY_SSO_PARAM">cocode</PROPERTY>
+	      <!-- token validity lifetime in seconds -->
+	<PROPERTY NAME="TOKEN_LIFETIME">120</PROPERTY>
+	<PROPERTY NAME="ALLOW_GET_OR_POST_FOR_SERVANTS">&project_root;/src/Config/post.properties</PROPERTY>
+	      <!-- End auth token filter/SSO agent configuration related -->
+		  
+	<!-- end of add by upendra -->
+    </PROPERTIES>
+  </SYSTEM>
+  <COMPONENTS>
+    <PLUGINS>   
+       
+      <COMPONENT NAME="Date Conv Factory" ORDER="120" CLASS="com.metricstream.systemi.client.servlet.DateConvFactory">
+        <PROPERTIES>
+          <PROPERTY NAME="PUSH_FORM_TIMESTAMP">com.metricstream.systemi.util.DateConverterImpl{PushFormTimeStamp.htmp}</PROPERTY>
+          <PROPERTY NAME="PUSH_FORM_DATE">com.metricstream.systemi.util.DateConverterImpl{PushFormDate.htmp}</PROPERTY>
+          <PROPERTY NAME="DEFAULT_FORMAT">com.metricstream.systemi.util.DateConverterImpl{DefaultTimeStamp.htmp}</PROPERTY>
+          <PROPERTY NAME="DATE_ONLY">com.metricstream.systemi.util.DateConverterImpl{DefaultDate.htmp}</PROPERTY>
+          <PROPERTY NAME="CHART_RUN_DATE_FORMAT">com.metricstream.systemi.util.DateConverterImpl{DefaultDate.htmp,DateDisplay.properties}</PROPERTY>
+          <PROPERTY NAME="CHART_TOOLTIP_DATE_FORMAT">com.metricstream.systemi.util.DateConverterImpl{DefaultDate.htmp,DateDisplay.properties}</PROPERTY>
+          <PROPERTY NAME="CHART_FILTER_DATE_FORMAT">com.metricstream.systemi.util.DateConverterImpl{DefaultDate.htmp,DateDisplay.properties}</PROPERTY>
+          <PROPERTY NAME="NEW_PUSH_FORM_DATE">com.metricstream.systemi.util.DateConverterImpl{PushFormDateDDMonSYYYY.htmp,DateDisplay.properties}</PROPERTY>
+          <PROPERTY NAME="PUSH_FORM_SINGLE_DATE">com.metricstream.systemi.util.DateConverterImpl{PushFormSingleDate.htmp}</PROPERTY>
+          <PROPERTY NAME="TIMESTAMP_WITH_SECS">com.metricstream.systemi.util.DateConverterImpl{DefaultTimeStampWithSecs.htmp,TimestampSecsDisplay.properties}</PROPERTY>
+          <PROPERTY NAME="PUSH_FORM_TIME_HOURDAY" TYPE="STRING">com.metricstream.systemi.util.DateConverterImpl{PushFormTimeHH.htmp,DateDisplay.properties}</PROPERTY>
+        </PROPERTIES>
+      </COMPONENT>
+	  <COMPONENT NAME="QUARTZ_SCHEDULER" ORDER="410" CLASS="com.metricstream.systemi.schedule.quartz.QuartzSchedulerTemplate">
+            <PROPERTIES>
+                <PROPERTY NAME="org.quartz.scheduler.instanceName">MetricStreamQuartzScheduler</PROPERTY>
+				<PROPERTY NAME="org.quartz.scheduler.instanceId">AUTO</PROPERTY>
+				<PROPERTY NAME="org.quartz.scheduler.skipUpdateCheck">true</PROPERTY>
+				<PROPERTY NAME="org.quartz.threadPool.threadCount">50</PROPERTY><!--
+				<PROPERTY NAME="org.quartz.jobStore.class">org.quartz.impl.jdbcjobstore.JobStoreTX</PROPERTY>
+				<PROPERTY NAME="org.quartz.jobStore.isClustered">true</PROPERTY>
+				<PROPERTY NAME="org.quartz.jobStore.tablePrefix">si_qrtz_</PROPERTY>
+				<PROPERTY NAME="org.quartz.jobStore.clusterCheckinInterval">5000</PROPERTY>
+				<PROPERTY NAME="org.quartz.jobStore.dataSource">msi</PROPERTY>
+				<PROPERTY NAME="org.quartz.dataSource.msi.connectionProvider.class">com.metricstream.systemi.schedule.quartz.util.QuartzConnectionProvider</PROPERTY>
+           --></PROPERTIES>
+      </COMPONENT> 
+	  <COMPONENT NAME="CACHE_PROVIDER" ORDER="136"
+                        CLASS="com.metricstream.systemi.cache.infinispan.InfinispanImpl">
+                        <PROPERTIES>
+                              <PROPERTY NAME="CACHE_CONFIG_PATH">&project_root;/src/Config/ecp-infinispan.xml</PROPERTY>
+                        </PROPERTIES>
+	</COMPONENT>
+    </PLUGINS>
+	<COMPONENT NAME="INFOLET EXECUTION ASYNC LOGGING" ORDER="123" CLASS="com.metricstream.systemi.server.metric.InfoletRunStatisticsLogger">
+		<PROPERTIES>
+			<PROPERTY NAME="INFOLET_STATISTICS_INTERVAL">10</PROPERTY><!--value should be specified in milli secs-->
+		</PROPERTIES>
+	  </COMPONENT>
+  </COMPONENTS>
+</MODULE>
+

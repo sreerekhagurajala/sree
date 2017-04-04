@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:infinispan:config:7.2 http://www.infinispan.org/schemas/infinispan-config-7.2.xsd"
+	xmlns="urn:infinispan:config:7.2">
+
+	<cache-container name="EGRCP" default-cache="EGRCP" statistics="true">
+		<local-cache name="UNIVERSAL_SEARCH_CACHE" statistics="true">
+		  <eviction max-entries="100" strategy="LIRS"/>
+		  <expiration interval="3600000"/> <!--  1 hour -->
+		</local-cache>
+	
+		<local-cache name="EGRCP_USER_SESSION_CACHE" statistics="true">
+		  <eviction max-entries="1000" strategy="LIRS"/>
+		  <expiration interval="7200000"/> <!--  2 hours -->
+		</local-cache>
+		
+		<local-cache name="EGRCP_ENTERPRISE_GLOBAL_CACHE" statistics="true">
+		  <eviction max-entries="1000" strategy="LIRS"/>
+		  <expiration interval="7200000"/> <!--  2 hours -->
+		</local-cache>
+		
+		<local-cache name="REST_DATA_CACHE" statistics="true">
+		  <eviction max-entries="5000" strategy="LIRS"/>
+		  <expiration interval="86400000"/> <!--  1 Day -->
+		</local-cache>
+		
+		<local-cache name="STRUCTURED_INFOLET" statistics="true">
+		  <eviction max-entries="5000" strategy="LIRS"/>
+		  <expiration interval="3600000"/> <!--  1 Hour -->
+		</local-cache>
+		
+		<local-cache name="MXBEANS" statistics="true">
+			<eviction max-entries="30" strategy="LIRS"/>
+		</local-cache>
+		
+		<local-cache name="EGRCP_FORM_ENGINE" statistics="true">
+		  <eviction max-entries="5000" strategy="LIRS"/>
+		  <expiration interval="3600000"/> <!--  1 Hour -->
+		</local-cache>
+		
+		<local-cache name="EGRCP_META_DATA" statistics="true">
+			<eviction max-entries="5000" strategy="LIRS"/>
+            <expiration interval="3600000"/> <!--  1 Hour -->
+		</local-cache>
+
+		<!-- <distributed-cache name="EGRCP_META_DATA" statistics="true" l1-lifespan="30000" owners="2" mode="SYNC">
+			<eviction max-entries="5000" />
+			<persistence passivation="false">
+	         	<file-store path="${METRICSTREAM.CACHE_STORE_PATH}" shared="false" preload="true" purge="true">
+	            	<write-behind flush-lock-timeout="12321" modification-queue-size="123" shutdown-timeout="321" thread-pool-size="10" />
+	         	</file-store>
+      		</persistence>
+		</distributed-cache> -->
+		
+		<local-cache name="EGRCP_PERSISTENT" statistics="true">
+			<eviction max-entries="5000" />
+			<persistence passivation="false">
+	         	<file-store path="${METRICSTREAM.CACHE_STORE_PATH}" shared="false" preload="true" purge="true">
+	            	<!-- <write-behind flush-lock-timeout="12321" modification-queue-size="123" shutdown-timeout="321" thread-pool-size="10" /> -->
+	         	</file-store>
+      		</persistence>
+		</local-cache>
+	</cache-container>	
+</infinispan>
